@@ -1,13 +1,17 @@
 import { defineConfig, Options } from "tsup";
 
-export default defineConfig((options: Options) => ({
-  treeshake: true,
-  splitting: true,
-  entry: ["src/**/*.tsx"],
+const BASE_CONFIG: Options = {};
+
+export default defineConfig({
+  entry: ["./src/index.ts"],
+  external: ["ethers", "react", "wagmi"],
   format: ["esm"],
-  dts: true,
-  minify: true,
+  platform: "browser",
+  sourcemap: true,
+  target: "esnext",
   clean: true,
-  external: ["react"],
-  ...options,
-}));
+  dts: true,
+  env: {
+    NODE_ENV: "production",
+  },
+});

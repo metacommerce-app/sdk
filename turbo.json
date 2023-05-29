@@ -4,13 +4,15 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
+      "env": ["ALCHEMY_MAINNET", "ALCHEMY_POLYGON", "ALCHEMY_GOERLI", "ALCHEMY_SEPOLIA", "ENV"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {},
     "check-types": {},
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "env": ["ALCHEMY_MAINNET", "ALCHEMY_GOERLI", "ALCHEMY_POLYGON", "ALCHEMY_SEPOLIA", "ENV"]
     },
     "clean": {
       "cache": false

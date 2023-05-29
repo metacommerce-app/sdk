@@ -1,0 +1,17 @@
+{
+    "Creates a basic React Function Component": {
+        "prefix": "cfc",
+        "body": [
+            "import React from \"react\";",            
+            "",
+            "const ${TM_FILENAME_BASE}: React.FC = () => {",
+            "",
+            "    return <>${TM_FILENAME_BASE}</>;",
+            "};",
+            "",
+            "export default ${TM_FILENAME_BASE};",
+            ""
+        ],
+        "description": "Creates a basic React Function Component"
+    }
+}
