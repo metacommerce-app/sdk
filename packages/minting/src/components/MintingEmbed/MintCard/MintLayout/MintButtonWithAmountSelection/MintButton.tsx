@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { useEmbed } from "../../../providers/useEmbed";
-import { Network } from "@interfaces/MintingEmbed";
-import { calculateAmountToMint } from "@components/MintingEmbed/utils";
-import { useContract } from "@components/MintingEmbed/providers/useContract";
-import { useMint } from "@components/MintingEmbed/hooks/useMint";
-import logger from "@services/logger";
-import Button from "@components/Button";
 import { ethers } from "ethers";
-import DisplayIf from "@components/conditionals/DIsplayIf";
+import React, { useState } from "react";
+import Button from "src/components/Button";
+import { useMint } from "src/components/MintingEmbed/hooks/useMint";
+import { useContract } from "src/components/MintingEmbed/providers/useContract";
+import { calculateAmountToMint } from "src/components/MintingEmbed/utils";
+import DisplayIf from "src/components/conditionals/DIsplayIf";
+import logger from "src/services/logger";
+import { extractErrorMessage } from "src/utils/chain.utils";
 
 interface MintButtonProps {
   amountToMint: number;
@@ -41,7 +40,9 @@ const MintButton: React.FC<MintButtonProps> = ({ amountToMint, onMint }) => {
       onMint(tx.transactionHash);
     } catch (err) {
       const error = err as Error;
-      setErrorMsg(error.message);
+      const msg = extractErrorMessage(error.message);
+
+      setErrorMsg(msg);
       logger.error(error);
     } finally {
       setLoading(false);
@@ -49,12 +50,12 @@ const MintButton: React.FC<MintButtonProps> = ({ amountToMint, onMint }) => {
   };
 
   return (
-    <div className="w-full flex flex-col gap-1">
+    <div className="flex w-full flex-col gap-1">
       <Button type="primary" disabled={isContractLoading} loading={loading} onClick={handleMint} className="w-full">
         {loading ? "Minting..." : `Mint ${amountToMint} for ${ethers.formatEther(amountInWei.toString())} ETH`}
       </Button>
       <DisplayIf condition={() => Boolean(errorMsg)}>
-        <p className="w-[500px] text-center text-red-500">{errorMsg}</p>
+        <p className="truncate text-center text-red-500">{errorMsg}</p>
       </DisplayIf>
     </div>
   );

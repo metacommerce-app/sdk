@@ -25,7 +25,12 @@ const MyApp: React.FunctionComponent<AppProps> = ({ Component, pageProps }) => (
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff" />
     </Head>
-    <MetacommerceProvider CLIENT_ID="123">
+    <MetacommerceProvider
+      config={{
+        API_KEY: "m3HEdd3gWp5nTD3z70Tt01WvOLbqOOX34kLebKe9",
+        API_URL: "https://rest.dev.metacommerce.app/v1",
+      }}
+    >
       <Component {...pageProps} />
     </MetacommerceProvider>
   </>

@@ -1,5 +1,5 @@
-import { ContractData, WalletProof } from "@interfaces/MintingEmbed";
 import React, { useContext } from "react";
+import { ContractData, WalletProof } from "src/interfaces/MintingEmbed";
 
 export type ContractContextDefinition = {
   isLoading: boolean;

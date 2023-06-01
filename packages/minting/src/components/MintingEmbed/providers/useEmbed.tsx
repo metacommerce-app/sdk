@@ -1,5 +1,5 @@
-import { MintingEmbed, Network } from "@interfaces/MintingEmbed";
 import React, { useContext } from "react";
+import { MintingEmbed, Network } from "src/interfaces/MintingEmbed";
 
 export type EmbedContextDefinition = {
   embed: MintingEmbed;

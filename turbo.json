@@ -4,7 +4,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["ALCHEMY_MAINNET", "ALCHEMY_POLYGON", "ALCHEMY_GOERLI", "ALCHEMY_SEPOLIA", "ENV"],
+      "env": ["ALCHEMY_MAINNET", "ALCHEMY_POLYGON", "ALCHEMY_GOERLI", "ALCHEMY_SEPOLIA", "ENV", "LOG_LEVEL"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {},
@@ -12,7 +12,7 @@
     "dev": {
       "cache": false,
       "persistent": true,
-      "env": ["ALCHEMY_MAINNET", "ALCHEMY_GOERLI", "ALCHEMY_POLYGON", "ALCHEMY_SEPOLIA", "ENV"]
+      "env": ["ALCHEMY_MAINNET", "ALCHEMY_GOERLI", "ALCHEMY_POLYGON", "ALCHEMY_SEPOLIA", "ENV", "LOG_LEVEL"]
     },
     "clean": {
       "cache": false

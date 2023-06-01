@@ -1,8 +1,8 @@
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
-import IconButton from "@components/IconButton";
-import Input from "@components/Input";
-import { useContract } from "@components/MintingEmbed/providers/useContract";
 import React from "react";
+import IconButton from "src/components/IconButton";
+import Input from "src/components/Input";
+import { useContract } from "src/components/MintingEmbed/providers/useContract";
 
 interface MintAmountProps {
   amount: number;
@@ -42,9 +42,9 @@ const MintAmount: React.FC<MintAmountProps> = ({ amount, onChange, isPaused }) =
   };
 
   return (
-    <div className="flex items-center w-full">
+    <div className="flex w-full items-center">
       <IconButton disabled={isLoading || amount <= 1 || isPaused} icon={<MinusOutlined />} onClick={handleReduce} />
-      <div className="rounded-lg p-2 w-full">
+      <div className="w-full rounded-lg p-2">
         <Input className="text-center" disabled={isPaused} type="number" value={amount} onChange={handleChange} />
       </div>
       <IconButton disabled={isLoading || amount >= maxAmount || isPaused} icon={<PlusOutlined />} onClick={handleIncrease} />

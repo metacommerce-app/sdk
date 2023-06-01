@@ -1,7 +1,7 @@
 import React from "react";
 import { CheckCircleTwoTone, LogoutOutlined } from "@ant-design/icons";
 import { useWallet } from "../../../../providers/useWallet";
-import IconButton from "@components/IconButton";
+import IconButton from "src/components/IconButton";
 
 const ConnectedWalletButton: React.FC = () => {
   const { address, disconnectWallet } = useWallet();

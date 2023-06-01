@@ -1,5 +1,3 @@
-import logger from "@services/logger";
-
 export const calculateAmountToMint = (priceInWei: bigint | number, amountToMint: number) => {
   if (!priceInWei) {
     return BigInt(0);

@@ -1,17 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { ContractContext, ContractContextDefinition } from "./useContract";
+import { studioProxyTemplateFunctions, studioProxyTemplateFunctionsWithoutArgs } from "../../../lib/StudioProxyTemplate";
 import { useWallet } from "../../../providers/useWallet";
-import { readContract } from "@wagmi/core";
-import { ContractData, Network, WalletProof } from "@interfaces/MintingEmbed";
-import { contractRead, contractReads } from "@hooks/useContractRead";
-import {
-  studioProxyTemplateFunctions,
-  studioProxyTemplateFunctionsWithArgs,
-  studioProxyTemplateFunctionsWithoutArgs,
-} from "../../../lib/StudioProxyTemplate";
-import logger from "@services/logger";
-import { isBigInt } from "@services/wagmi";
-import { isNullOrEmpty } from "@utils/utils";
+import { ContractContext, ContractContextDefinition } from "./useContract";
+import { ContractData, Network, WalletProof } from "src/interfaces/MintingEmbed";
+import { contractReads, contractRead } from "src/hooks/useContractRead";
+import logger from "src/services/logger";
+import { isNullOrEmpty } from "src/utils/utils";
 
 export type ContractProviderProps = {
   children: React.ReactNode | React.ReactNode[];
@@ -50,10 +44,10 @@ export const ContractProvider = (props: ContractProviderProps) => {
         setIsLoading(false);
       }
     };
-    if (contractAddress && network) {
+    if (contractAddress && network && address) {
       getContractData();
     }
-  }, [contractAddress, network]);
+  }, [contractAddress, network, address]);
 
   const checkIfWalletCanMint = async (amountToMint: number, maybeProofs?: WalletProof) => {
     // check if contract is paused

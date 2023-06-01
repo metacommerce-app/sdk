@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { EmbedContext, EmbedContextDefinition } from "./useEmbed";
-import { networkToChainId } from "@utils/chain.utils";
-import { MintingEmbed } from "@interfaces/MintingEmbed";
+import { MintingEmbed } from "src/interfaces/MintingEmbed";
+import { networkToChainId } from "src/utils/chain.utils";
 
 export type EmbedProviderProps = {
   children: React.ReactNode | React.ReactNode[];

@@ -46,3 +46,31 @@ export const networkToReadableBlockExplorer = (network: Network) => {
       return `Etherscan`;
   }
 };
+
+export const ChainIdToNetwork: Record<number, Network> = {
+  11155111: Network.EthereumSepolia,
+  1: Network.EthereumMainnet,
+  5: Network.EthereumGoerli,
+};
+
+// This is a hack due to the inability to retrieve the error reason using wagmi handlers
+// Unfortunately, wagmi doesnt let us gracefully handle errors: https://github.com/wagmi-dev/wagmi/discussions/1511
+export const extractWagmiErrorReason = (message: string): string => {
+  const extractedMessage = message.split("reason=")[1]?.split('"')[1];
+  if (extractedMessage) {
+    return extractedMessage;
+  }
+  return "An unsupported error occured";
+};
+
+export const extractErrorMessage = (message: string): string => {
+  if (message.includes("The total cost (gas * gas fee + value) of executing this transaction exceeds the balance of the account.")) {
+    return "Not enough funds to cover gas fees";
+  }
+
+  if (message.includes("Connector not found")) {
+    return "No web3 provider found";
+  }
+
+  return message;
+};

@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { connect } from "@wagmi/core";
-import { InjectedConnector } from "@wagmi/core/connectors/injected";
-import DisplayIf from "@components/conditionals/DIsplayIf";
 import { LoadingOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+import DisplayIf from "src/components/conditionals/DIsplayIf";
 
 interface ButtonProps {
   children: React.ReactNode | React.ReactNode[];

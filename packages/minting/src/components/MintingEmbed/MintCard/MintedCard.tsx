@@ -1,8 +1,8 @@
 import { RedoOutlined } from "@ant-design/icons";
-import Button from "@components/Button";
-import { useEmbed } from "@components/MintingEmbed/providers/useEmbed";
-import { getEtherscanLink, networkToReadableBlockExplorer } from "@utils/chain.utils";
 import React from "react";
+import Button from "src/components/Button";
+import { useEmbed } from "src/components/MintingEmbed/providers/useEmbed";
+import { getEtherscanLink, networkToReadableBlockExplorer } from "src/utils/chain.utils";
 
 interface MintedCardProps {
   onClose: () => void;
@@ -13,10 +13,10 @@ const MintedCard: React.FC<MintedCardProps> = ({ onClose, txHash }) => {
   const { network } = useEmbed();
 
   return (
-    <div className="p-2 h-full w-full flex items-center justify-center ">
+    <div className="flex h-full w-full items-center justify-center p-2 ">
       <div className="flex flex-col items-center gap-3">
-        <div className="transition ease-in-out delay-150 ">{/* <LottieAnimation type="success" width="150px" height="150px" autoplay /> */}</div>
-        <h4 className="text-xl whitespace-nowrap">{"Your transaction has been submitted!"}</h4>
+        <div className="transition delay-150 ease-in-out ">{/* <LottieAnimation type="success" width="150px" height="150px" autoplay /> */}</div>
+        <h4 className="whitespace-nowrap text-xl">{"Your transaction has been submitted!"}</h4>
         <p>
           {"You can view your transaction on "}
           <a href={getEtherscanLink(network, txHash, "tx")} target="_blank" rel="noreferrer" className="text-blue-500">

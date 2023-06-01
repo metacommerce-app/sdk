@@ -1,7 +1,7 @@
-import { WalletAddress } from "@interfaces/MintingEmbed";
 import { disconnect, getAccount, watchAccount, watchNetwork } from "@wagmi/core";
 import React, { useEffect, useMemo, useState } from "react";
 import { WalletContext, WalletContextDefinition } from "./useWallet";
+import { WalletAddress } from "src/interfaces/MintingEmbed";
 
 export type WalletProviderProps = {
   children: React.ReactNode | React.ReactNode[];

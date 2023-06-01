@@ -1,8 +1,9 @@
-import { useEmbed } from "@components/MintingEmbed/providers/useEmbed";
-import logger from "@services/logger";
-import { networkToChainId } from "@utils/chain.utils";
 import { waitForTransaction, writeContract } from "@wagmi/core";
 import { StudioProxyTemplate } from "../../../lib/StudioProxyTemplate";
+import { useEmbed } from "src/components/MintingEmbed/providers/useEmbed";
+import logger from "src/services/logger";
+import { networkToChainId } from "src/utils/chain.utils";
+import { Network } from "src/interfaces/MintingEmbed";
 
 export const useMint = () => {
   const { embed } = useEmbed();
@@ -13,7 +14,7 @@ export const useMint = () => {
 
     const { hash } = await writeContract({
       address: embed.definition.contractAddress,
-      chainId: networkToChainId[embed.definition.network],
+      chainId: networkToChainId[embed.definition.network as Network],
       abi: StudioProxyTemplate,
       functionName: "mint",
       args: [amountToMint],

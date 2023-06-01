@@ -1,5 +1,5 @@
-import { WalletAddress } from "@interfaces/MintingEmbed";
 import React, { useContext } from "react";
+import { WalletAddress } from "src/interfaces/MintingEmbed";
 
 export type WalletContextDefinition = {
   isConnected: boolean;

@@ -1,7 +1,7 @@
-import DisplayIf from "@components/conditionals/DIsplayIf";
 import React from "react";
 import { useWallet } from "../../providers/useWallet";
-import ConnectWalletButton from "@components/ConnectWalletButton";
+import DisplayIf from "src/components/conditionals/DIsplayIf";
+import ConnectWalletButton from "src/components/ConnectWalletButton";
 
 type Props = {
   targetChainId?: number;
